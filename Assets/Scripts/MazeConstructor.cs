@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-
+using UnityEngine.AI;
 public class MazeConstructor : MonoBehaviour {
   //1
   public bool showDebug;
   private MazeDataGenerator dataGenerator;
   private MazeMeshGenerator meshGenerator;
+  public NavMeshSurface agent;
 
   [SerializeField] private Material mazeMat1;
   [SerializeField] private Material mazeMat2;
@@ -51,6 +52,7 @@ public class MazeConstructor : MonoBehaviour {
     };
     dataGenerator = new MazeDataGenerator ();
     meshGenerator = new MazeMeshGenerator ();
+   
   }
 
   public void GenerateNewMaze (int sizeRows, int sizeCols,
@@ -118,6 +120,8 @@ public class MazeConstructor : MonoBehaviour {
 
     MeshRenderer mr = go.AddComponent<MeshRenderer> ();
     mr.materials = new Material[2] { mazeMat1, mazeMat2 };
+
+    agent.BuildNavMesh();
   }
 
   public void DisposeOldMaze () {

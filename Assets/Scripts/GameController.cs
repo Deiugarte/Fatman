@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
   //1
   [SerializeField] private FpsMovement player;
+  [SerializeField] private GameObject enemy;
+
   [SerializeField] private Text timeLabel;
   [SerializeField] private Text scoreLabel;
 
@@ -46,6 +48,11 @@ public class GameController : MonoBehaviour {
     float y = 1;
     float z = generator.startRow * generator.hallWidth;
     player.transform.position = new Vector3 (x, y, z);
+
+    float x1 = generator.goalCol * generator.hallWidth;
+    float y1 = 1;
+    float z1 = generator.goalRow * generator.hallWidth;
+    enemy.transform.position = new Vector3 (x1, y1, z1);
 
     goalReached = false;
     player.enabled = true;
