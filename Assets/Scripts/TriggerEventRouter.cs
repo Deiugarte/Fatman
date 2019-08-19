@@ -18,6 +18,7 @@ public class TriggerEventRouter : MonoBehaviour
     {
         if (callback != null)
         {
+            Debug.Log("*** Player is in contact with Cube. ***");
             callback(this.gameObject, other.gameObject);
         }
     }

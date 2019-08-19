@@ -179,7 +179,7 @@ public class MazeConstructor : MonoBehaviour {
 
   private void PlaceGoalTrigger (TriggerEventHandler callback) {
     GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
-    go.transform.position = new Vector3 (goalCol * hallWidth, .5f, goalRow * hallWidth);
+    go.transform.position = new Vector3 (1 + goalCol * hallWidth, .5f, 1 + goalRow * hallWidth);
     go.name = "Treasure";
     go.tag = "Generated";
 

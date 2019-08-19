@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 1014630443}
   - component: {fileID: 1014630442}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: HeartIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,6 +951,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1773131082}
   movementSpeed: 5
+--- !u!136 &1123453098
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123453092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &1280697452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,9 +1511,11 @@ GameObject:
   - component: {fileID: 1773131085}
   - component: {fileID: 1773131084}
   - component: {fileID: 1773131083}
+  - component: {fileID: 1773131086}
+  - component: {fileID: 1773131087}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1556,6 +1572,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1773131086
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773131082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &1773131087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773131082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2728639f31188f408eeb3913e42aba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 100
+  healthSlider: {fileID: 1784505087}
+  damageImage: {fileID: 0}
+  deathClip: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!1 &1784505085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1616,7 @@ GameObject:
   - component: {fileID: 1784505086}
   - component: {fileID: 1784505087}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1658,6 +1707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kiwi
       objectReference: {fileID: 0}
+    - target: {fileID: 7375857618554666181, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1676,22 +1730,22 @@ PrefabInstance:
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7867917
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6172186
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
@@ -1706,7 +1760,7 @@ PrefabInstance:
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 103.773
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7375857618554666203, guid: 14bf9cd2120fb4e43b017f42dee57ba4,
         type: 3}
