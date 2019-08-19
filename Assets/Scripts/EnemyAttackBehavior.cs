@@ -11,18 +11,28 @@ public class EnemyAttackBehavior : MonoBehaviour
     public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.15f);     // The colour the damageImage is set to, to flash.
     
 
-   
+
     
     void OnTriggerEnter(Collider other)
     {    
         if(other.gameObject == GameObject.FindGameObjectWithTag ("Enemy")){
             healthSlider.value -= 10;
+            damageImage.color = flashColour;
+           
+            // damageImage.color = flashColour;
+
             Debug.Log("*** Player is in contact with Enemy. ***");
         }            
     }
+    void OnTriggerExit(Collider other){
+        if(other.gameObject == GameObject.FindGameObjectWithTag ("Enemy")){
+            damageImage.color = Color.Lerp (new Color(1f, 0f, 0f, 0), Color.clear, flashSpeed * Time.deltaTime); 
+        }
+    }
+
 
 
     
