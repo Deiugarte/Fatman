@@ -39,6 +39,34 @@ public class MazeConstructor : MonoBehaviour {
     private set;
   }
 
+  //Enemies
+  public int secondEnemyRow {
+    get;
+    private set;
+  }
+  public int secondEnemyCol {
+    get;
+    private set;
+  }
+
+  public int lastEnemyRow {
+    get;
+    private set;
+  }
+  public int lastEnemyCol {
+    get;
+    private set;
+  }
+
+  public int powerUpRow {
+    get;
+    private set;
+  }
+  public int powerUpCol {
+    get;
+    private set;
+  }
+
   //2
   public int[, ] data {
     get;
@@ -67,6 +95,9 @@ public class MazeConstructor : MonoBehaviour {
 
     FindStartPosition ();
     FindGoalPosition ();
+    FindSecondEnemyPosition ();
+    FindLastEnemyPosition ();
+    FindPowerUpPosition ();
 
     // store values used to generate this mesh
     hallWidth = meshGenerator.width;
@@ -76,6 +107,9 @@ public class MazeConstructor : MonoBehaviour {
 
     PlaceStartTrigger (startCallback);
     PlaceGoalTrigger (goalCallback);
+    PlaceSecondEnemyTrigger ();
+    PlaceLastEnemyTrigger ();
+    FirstPowerUPTrigger ();
   }
   void OnGUI () {
     //1
@@ -164,6 +198,58 @@ public class MazeConstructor : MonoBehaviour {
     }
   }
 
+  //Enemies
+  private void FindSecondEnemyPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 8; i >= 0; i--) {
+      for (int j = cMax - 8; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          secondEnemyRow = i;
+          secondEnemyCol = j;
+          return;
+        }
+      }
+    }
+  }
+
+  private void FindLastEnemyPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 3; i >= 0; i--) {
+      for (int j = cMax - 3; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          lastEnemyRow = i;
+          lastEnemyCol = j;
+          return;
+        }
+      }
+    }
+  }
+
+  private void FindPowerUpPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 6; i >= 0; i--) {
+      for (int j = cMax - 6; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          powerUpRow = i;
+          powerUpCol = j;
+          return;
+        }
+      }
+    }
+  }
+
   private void PlaceStartTrigger (TriggerEventHandler callback) {
     GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
     go.transform.position = new Vector3 (startCol * hallWidth, .5f, startRow * hallWidth);
@@ -188,6 +274,27 @@ public class MazeConstructor : MonoBehaviour {
 
     TriggerEventRouter tc = go.AddComponent<TriggerEventRouter> ();
     tc.callback = callback;
+  }
+    //Enemies 
+  private void PlaceSecondEnemyTrigger () {
+    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
+    go.transform.position = new Vector3 (secondEnemyCol * hallWidth, .5f, secondEnemyRow * hallWidth);
+
+    // go.GetComponent<BoxCollider> ().isTrigger = true;
+  }
+
+  private void PlaceLastEnemyTrigger () {
+    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
+    go.transform.position = new Vector3 (lastEnemyCol * hallWidth, .5f, lastEnemyRow * hallWidth);
+
+    // go.GetComponent<BoxCollider> ().isTrigger = true;
+  }
+
+  private void FirstPowerUPTrigger () {
+    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
+    go.transform.position = new Vector3 (powerUpCol * hallWidth, .5f, powerUpRow * hallWidth);
+
+    // go.GetComponent<BoxCollider> ().isTrigger = true;
   }
 
 }
