@@ -20,10 +20,16 @@ public class EnemyAttackBehavior : MonoBehaviour
     {    
         if(other.gameObject == GameObject.FindGameObjectWithTag ("Enemy")){
             healthSlider.value -= 10;
+            currentHealth -= 10;
             damageImage.color = flashColour;
            
             // damageImage.color = flashColour;
 
+            Debug.Log("*** Player is in contact with Enemy. ***");
+        }
+        if(other.gameObject == GameObject.FindGameObjectWithTag ("Health")){
+            healthSlider.value += 10;
+            currentHealth += 10;
             Debug.Log("*** Player is in contact with Enemy. ***");
         }            
     }

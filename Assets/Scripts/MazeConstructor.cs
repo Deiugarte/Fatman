@@ -38,6 +38,33 @@ public class MazeConstructor : MonoBehaviour {
     get;
     private set;
   }
+  //Enemies
+  public int secondEnemyRow {
+    get;
+    private set;
+  }
+  public int secondEnemyCol {
+    get;
+    private set;
+  }
+
+  public int lastEnemyRow {
+    get;
+    private set;
+  }
+  public int lastEnemyCol {
+    get;
+    private set;
+  }
+  // power up
+  public int powerUpRow {
+    get;
+    private set;
+  }
+  public int powerUpCol {
+    get;
+    private set;
+  }
 
   //2
   public int[, ] data {
@@ -67,6 +94,9 @@ public class MazeConstructor : MonoBehaviour {
 
     FindStartPosition ();
     FindGoalPosition ();
+    FindSecondEnemyPosition ();
+    FindLastEnemyPosition ();
+    FindPowerUpPosition ();
 
     // store values used to generate this mesh
     hallWidth = meshGenerator.width;
@@ -158,6 +188,58 @@ public class MazeConstructor : MonoBehaviour {
         if (maze[i, j] == 0) {
           goalRow = i;
           goalCol = j;
+          return;
+        }
+      }
+    }
+  }
+
+  //Enemies
+  private void FindSecondEnemyPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 8; i >= 0; i--) {
+      for (int j = cMax - 8; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          secondEnemyRow = i;
+          secondEnemyCol = j;
+          return;
+        }
+      }
+    }
+  }
+
+  private void FindLastEnemyPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 3; i >= 0; i--) {
+      for (int j = cMax - 3; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          lastEnemyRow = i;
+          lastEnemyCol = j;
+          return;
+        }
+      }
+    }
+  }
+
+  private void FindPowerUpPosition () {
+    int[, ] maze = data;
+    int rMax = maze.GetUpperBound (0);
+    int cMax = maze.GetUpperBound (1);
+
+    // loop top to bottom, right to left
+    for (int i = rMax - 6; i >= 0; i--) {
+      for (int j = cMax - 6; j >= 0; j--) {
+        if (maze[i, j] == 0) {
+          powerUpRow = i;
+          powerUpCol = j;
           return;
         }
       }
