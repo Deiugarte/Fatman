@@ -86,13 +86,13 @@ public class GameController : MonoBehaviour {
   //7
   private void OnGoalTrigger (GameObject trigger, GameObject other) {
     Debug.Log ("Goal!");
-    Debug.Log("Player is in contact with Goal Trigger...");
+    Debug.Log ("Player is in contact with Goal Trigger...");
     goalReached = false;
 
- 
     scoreLabel.text = score.ToString ();
 
     Destroy (trigger);
+    Invoke ("StartNewMaze", 4);
   }
 
   private void OnStartTrigger (GameObject trigger, GameObject other) {
@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour {
       Debug.Log ("Finish!");
       player.enabled = false;
       score += 1;
-      Invoke ("StartNewMaze", 4);
+
     }
   }
 }
