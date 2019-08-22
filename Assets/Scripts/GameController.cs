@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour {
   //1
   [SerializeField] private FpsMovement player;
   [SerializeField] private GameObject enemy;
+  [SerializeField] private GameObject secondEnemy;
+  [SerializeField] private GameObject lastEnemy;
+  [SerializeField] private GameObject firstPowerUP;
 
   [SerializeField] private Text timeLabel;
   [SerializeField] private Text scoreLabel;
@@ -43,16 +46,30 @@ public class GameController : MonoBehaviour {
   //5
   private void StartNewMaze () {
     generator.GenerateNewMaze (13, 15, OnStartTrigger, OnGoalTrigger);
+    float y = 1;
 
     float x = generator.startCol * generator.hallWidth;
-    float y = 1;
     float z = generator.startRow * generator.hallWidth;
     player.transform.position = new Vector3 (x, y, z);
 
     float x1 = generator.goalCol * generator.hallWidth;
-    float y1 = 1;
     float z1 = generator.goalRow * generator.hallWidth;
-    enemy.transform.position = new Vector3 (x1, y1, z1);
+    enemy.transform.position = new Vector3 (x1, y, z1);
+
+    //Second Enemy
+    float x2 = generator.secondEnemyCol * generator.hallWidth;
+    float z2 = generator.secondEnemyRow * generator.hallWidth;
+    secondEnemy.transform.position = new Vector3 (x2, y, z2);
+
+    //last Enemy
+    float x4 = generator.lastEnemyCol * generator.hallWidth;
+    float z4 = generator.lastEnemyRow * generator.hallWidth;
+    lastEnemy.transform.position = new Vector3 (x4, y, z4);
+
+    //First Power UP
+    float x3 = generator.powerUpCol * generator.hallWidth;
+    float z3 = generator.powerUpRow * generator.hallWidth;
+    firstPowerUP.transform.position = new Vector3 (x3, y, z3);
 
     goalReached = false;
     player.enabled = true;
