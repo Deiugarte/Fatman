@@ -57,7 +57,7 @@ public class MazeConstructor : MonoBehaviour {
     get;
     private set;
   }
-
+  // power up
   public int powerUpRow {
     get;
     private set;
@@ -107,9 +107,6 @@ public class MazeConstructor : MonoBehaviour {
 
     PlaceStartTrigger (startCallback);
     PlaceGoalTrigger (goalCallback);
-    PlaceSecondEnemyTrigger ();
-    PlaceLastEnemyTrigger ();
-    FirstPowerUPTrigger ();
   }
   void OnGUI () {
     //1
@@ -275,26 +272,4 @@ public class MazeConstructor : MonoBehaviour {
     TriggerEventRouter tc = go.AddComponent<TriggerEventRouter> ();
     tc.callback = callback;
   }
-    //Enemies 
-  private void PlaceSecondEnemyTrigger () {
-    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
-    go.transform.position = new Vector3 (secondEnemyCol * hallWidth, .5f, secondEnemyRow * hallWidth);
-
-    // go.GetComponent<BoxCollider> ().isTrigger = true;
-  }
-
-  private void PlaceLastEnemyTrigger () {
-    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
-    go.transform.position = new Vector3 (lastEnemyCol * hallWidth, .5f, lastEnemyRow * hallWidth);
-
-    // go.GetComponent<BoxCollider> ().isTrigger = true;
-  }
-
-  private void FirstPowerUPTrigger () {
-    GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
-    go.transform.position = new Vector3 (powerUpCol * hallWidth, .5f, powerUpRow * hallWidth);
-
-    // go.GetComponent<BoxCollider> ().isTrigger = true;
-  }
-
 }

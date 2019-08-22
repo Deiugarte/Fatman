@@ -46,10 +46,10 @@ public class GameController : MonoBehaviour {
   //5
   private void StartNewMaze () {
     generator.GenerateNewMaze (13, 15, OnStartTrigger, OnGoalTrigger);
+    float y = 1;
 
     //Start Cube
     float x = generator.startCol * generator.hallWidth;
-    float y = 1;
     float z = generator.startRow * generator.hallWidth;
     player.transform.position = new Vector3 (x, y, z);
 
@@ -107,8 +107,6 @@ public class GameController : MonoBehaviour {
     Debug.Log ("Goal!");
     Debug.Log("Player is in contact with Goal Trigger...");
     goalReached = false;
-
- 
     scoreLabel.text = score.ToString ();
 
     Destroy (trigger);
