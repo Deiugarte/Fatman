@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 794626949}
   - component: {fileID: 794626948}
   - component: {fileID: 794626947}
+  - component: {fileID: 794626952}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Health
@@ -803,7 +804,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -866,6 +867,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &794626952
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794626946}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &974588508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1102,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Center: {x: 0, y: -1.5, z: 0}
 --- !u!1 &1280697452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1197,7 @@ PrefabInstance:
     - target: {fileID: 795639398045629092, guid: 1f1d317f786047a46a886dde1325f11f,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_2
       objectReference: {fileID: 0}
     - target: {fileID: 795639398045629090, guid: 1f1d317f786047a46a886dde1325f11f,
         type: 3}
@@ -1304,10 +1327,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.2
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1298252404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1867,7 +1890,7 @@ PrefabInstance:
     - target: {fileID: 151098392763281635, guid: 1acaebd824030cd4eb1f844628830aed,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_3
       objectReference: {fileID: 0}
     - target: {fileID: 151098392763281633, guid: 1acaebd824030cd4eb1f844628830aed,
         type: 3}
@@ -1965,8 +1988,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.25
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &1669822244
@@ -2087,10 +2110,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2.1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &1773131087
 MonoBehaviour:
   m_ObjectHideFlags: 0
